@@ -111,7 +111,6 @@ object Main {
     multiPrintRecursive("Hi",4)
     SumWithPatternMatching(3,5,true)
     swapInputs(Array(5,1))
-
   }
 
 
