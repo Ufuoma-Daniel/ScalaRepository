@@ -70,6 +70,19 @@ object Main {
       }
     }
 
+    def blackJack(a: Int, b: Int) : Unit = {
+      if((a > b) && (a <= 21 && a > 0)) {  println("Player A has won with a score of "+a)}
+      if((a < b) && (b <= 21 && b > 0)) {  println("Player B has won with a score of "+b)}
+      if((a == b) && (a == 21)) {  println("Both players got 21")}
+      if((a > 21) && (b > 21)) {  println("Both players busted")}
+    }
+
+    def uniqueSum(a: Int, b: Int, c: Int) : Unit = {
+      var set = Set(a,b,c)
+      var total = 0
+      for(x<-0 until set.size){ total = total //GET SET NUMBER }
+
+    }
 
     def fizzBuzzRecursive(a: String, b: String, c: Int) : Unit = {
       fizzBuzzRecursive2(a,b,c,1)
@@ -110,7 +123,8 @@ object Main {
     cutString("Testing",4)
     multiPrintRecursive("Hi",4)
     SumWithPatternMatching(3,5,true)
-    swapInputs(Array(5,1))
+    //swapInputs(Array(5,1))
+    blackJack(22,22)
   }
 
 
