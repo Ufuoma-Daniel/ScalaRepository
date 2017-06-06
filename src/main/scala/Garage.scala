@@ -27,18 +27,17 @@ class Garage (a: String) {
 
   def removeFromVehicleListByType(removeType: String) : Unit = {
     for(loop<-0 to vehicleList.size){
-      println(vehicleList.size)
-      if(vehicleList(loop).getVehicleType.equals(removeType)) {vehicleList.remove(loop)}
+      if(vehicleList(loop).getVehicleType.equals(removeType)) {var index =vehicleList(loop).getVehicleID; vehicleList.remove(index)}
     }
   }
 
-  def printVehicleList() {for(loop<-0 to vehicleList.size){println(vehicleList(loop).printDetails())}}
+  def printVehicleList() {for(loop<-0 until vehicleList.size){println(vehicleList(loop).printDetails())}}
 
   //Employee Interactions
   def addToEmployeeList(newEmployee: Employee) : Unit = {employeeList += newEmployee}
   def turnEBufferToList() {employeeList.toList}
   def removeFromEmployeeListByID(removeID: Int) : Unit = {employeeList -= employeeList(removeID)}
-  def printEmployeeList() {for(loop<-0 to employeeList.size){println(employeeList(loop).printEDetails())}}
+  def printEmployeeList() {for(loop2<-0 until employeeList.size){println(employeeList(loop2).printEDetails())}}
 
 
 

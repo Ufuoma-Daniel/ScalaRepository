@@ -182,10 +182,10 @@ object Main {
     g1.addToEmployeeList(emp1); g1.addToEmployeeList(emp2); g1.addToEmployeeList(emp3)
     g1.addCarToVehicleList(c1); g1.addCarToVehicleList(c2); g1.addCarToVehicleList(c3)
     g1.addBikeToVehicleList(b1); g1.addBikeToVehicleList(b2); g1.addBikeToVehicleList(b3)
-   // g1.removeFromVehicleListByID(2)
-    //g1.printEmployeeList(); g1.printVehicleList()
-    g1.removeFromVehicleListByType("Bike");
-    g1.printVehicleList()
+    //g1.removeFromVehicleListByID(2)
+    g1.printEmployeeList() ; g1.printVehicleList()
+    //g1.removeFromVehicleListByType("Bike");
+   //g1.printVehicleList()
 
     println()
   }
