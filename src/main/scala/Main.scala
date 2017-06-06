@@ -79,7 +79,6 @@ object Main {
     def squarePrintRecursive2 (a: String, b: Int, c: Int) : Unit = {
       if(c == 0 && b != 0){ squarePrintRecursive2(a,b-1,b)   }else{
         squarePrintRecursive2(a,b,c-1)
-
       }
 
     }
@@ -126,7 +125,7 @@ object Main {
     def blackJack(a: Int, b: Int) : Unit = {
       if((a > b) && (a <= 21 && a > 0)) {  println("Player A has won with a score of "+a)}
       if((a < b) && (b <= 21 && b > 0)) {  println("Player B has won with a score of "+b)}
-      if((a == b) && (a == 21)) {  println("Both players got 21")}
+      if((a == b)) {  println("Both players got "+a)}
       if((a > 21) && (b > 21)) {  println("Both players busted")}
     }
     def uniqueSum(a: Int, b: Int, c: Int) : Unit = {
@@ -144,8 +143,9 @@ object Main {
 
     //STILL NEEDS TO BE FINISHED
     def functional() : Unit = {
-      val  a: Array[String] = TimeZone.getAvailableIDs.filter(_.length>3)
-      for(x<-0 until a.length){print(a(x)+",")}
+      //val  a: Array[String] = TimeZone.getAvailableIDs.filter(_.length>3)
+     // val a = TimeZone.getAvailableIDs.filter(_.length>3)
+      //for(x<-0 to a.length){print(a(x)+",")}
     }
 
     //Ongoing
@@ -164,6 +164,29 @@ object Main {
 //    uniqueSum(1,1,2)
 //    functional()
 //    weather(100,true)
+
+    val emp1 = new Employee("Daniel", 20, "3 Mysterious Drive", "fake@email.com", "07530372629", "Salesman")
+    val emp2 = new Employee("Jason", 28, "2 Haunted Avenue ", "fake@gmail.com", "07530372629", "Salesman")
+    val emp3 = new Employee("Nora", 18, "1 Dark Dungeon", "hahaha@yahoo.com", "07530372629", "Saleswoman")
+
+    var c1 = new Car("Name 1", "Car" ,150 ,"Blue", "Petrol", "Vauxhall", "Five-Seater")
+    var c2 = new Car("Name 2", "Car" ,250 ,"Black", "Diesel", "Toyota", "Four-Seater")
+    var c3 = new Car("Name 3", "Car" ,500 ,"Red", "Electric", "Honda", "Five-Seater")
+
+    var b1= new Bike("Bike 1","Bike", 80, "Green", "Mountain")
+    var b2= new Bike("Bike 2","Bike", 120, "White", "BMX")
+    var b3= new Bike("Bike 3","Bike", 200, "Black", "BMX")
+
+    var g1 = new Garage("1")
+
+    g1.addToEmployeeList(emp1); g1.addToEmployeeList(emp2); g1.addToEmployeeList(emp3)
+    g1.addCarToVehicleList(c1); g1.addCarToVehicleList(c2); g1.addCarToVehicleList(c3)
+    g1.addBikeToVehicleList(b1); g1.addBikeToVehicleList(b2); g1.addBikeToVehicleList(b3)
+   // g1.removeFromVehicleListByID(2)
+    //g1.printEmployeeList(); g1.printVehicleList()
+    g1.removeFromVehicleListByType("Bike");
+    g1.printVehicleList()
+
     println()
   }
 
