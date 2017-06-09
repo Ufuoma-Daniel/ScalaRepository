@@ -1,3 +1,13 @@
+java.util.TimeZone.getAvailableIDs.map(item => item.split("/").last).filter(_.length > 4).grouped(10).map(item => item(2)).toList
+java.util.TimeZone.getAvailableIDs.map(item => item.split("/").last).filter(_.length > 4).grouped(10).next()
+
+
+def x (array: Array[String]): Unit = {
+   print(array)
+}
+
+x(Array[String]("Hi"))
+
 
 def testFunction(a: Int, b: Int) : Unit = {
   var a = 5

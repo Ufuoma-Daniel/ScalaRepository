@@ -1,7 +1,9 @@
+package ObjectOrientedGarage
+
 /**
   * Created by Administrator on 06/06/2017.
   */
-class Car (name: String, vType: String, cost: Int, colour: String, fuelType_ : String, carMake_ : String, seatAmount_ : String ) extends Vehicle(name,vType, cost, colour){
+class Car (name: String, vType: String, cost: Int, colour: String, fuelType_ : String, carMake_ : String, seatAmount_ : String, owner : Person ) extends Vehicle(name,vType, cost, colour, owner){
   private var fuelType = fuelType_
   private var carMake = carMake_
   private var seatAmount = seatAmount_

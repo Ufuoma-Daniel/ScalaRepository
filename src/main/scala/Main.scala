@@ -103,7 +103,7 @@ object Main {
       }
     }
     def SumWithPatternMatching(a: Int, b: Int, c: Boolean) : Unit = {
-      var newList = List(a, b, c); var d = a+b ; var e = a*b;
+      var newList = List(a, b, c); val d = a+b ; val e = a*b;
       newList match {
         case List(0, b, c) => println(b)
         case List(a, 0, c) => println(a)
@@ -129,26 +129,23 @@ object Main {
       if((a > 21) && (b > 21)) {  println("Both players busted")}
     }
     def uniqueSum(a: Int, b: Int, c: Int) : Unit = {
-      val set = Set(a,b,c); var list = List(a,b,c) ;list = set.toList; var total = 0;
-      if(list.size > 1){ total = 1 } else{  total = 0 }
-      for(x<-0 until list.size){ total*= list(x)}
-      println(total)
+      var list = List(a,b,c) ; var total = 0
+        for(x<-0 until list.size-1){
+          if(list(x) == list((x+1)%3) || (list(x) == list((x+2)%3))){} else {total+= list(x)}}
+       println(total)
+    }
+    def uniqueSum2(a: Int, b: Int, c: Int) : Unit = {
+      val set = Set(a,b,c).toList;
+      if(set.size>1){println(set.foldRight(1)((a,b) => a+b))} else { println(0)}
     }
     def tooHot(temperature: Int, isSummer: Boolean) : Unit = {
-      var upperLimit = 90; var answer = true
-      if(isSummer == true){ upperLimit = 100}
-      if(temperature >= 60 && temperature <= upperLimit){ answer= true } else { answer= false}
-      println(answer)
+      var upperLimit = 90; if(isSummer){ upperLimit = 100}
+      if(temperature >= 60 && temperature <= upperLimit){ println(true) } else { println(false)}
     }
-
-    //STILL NEEDS TO BE FINISHED
     def functional() : Unit = {
-      //val  a: Array[String] = TimeZone.getAvailableIDs.filter(_.length>3)
-     // val a = TimeZone.getAvailableIDs.filter(_.length>3)
-      //for(x<-0 to a.length){print(a(x)+",")}
+      java.util.TimeZone.getAvailableIDs.map(item => item.split("/").last).filter(_.length > 4)
     }
 
-    //Ongoing
 
 
 
@@ -161,30 +158,51 @@ object Main {
 //    SumWithPatternMatching(3,5,true)
 //    swapInputs(Array(5,1,7))
 //    blackJack(22,22)
-//    uniqueSum(1,1,2)
-//    functional()
+   //    uniqueSum(1,3,1)
+ //      uniqueSum2(1,1,3)
+
+  // functional()
 //    weather(100,true)
 
-    val emp1 = new Employee("Daniel", 20, "3 Mysterious Drive", "fake@email.com", "07530372629", "Salesman")
-    val emp2 = new Employee("Jason", 28, "2 Haunted Avenue ", "fake@gmail.com", "07530372629", "Salesman")
-    val emp3 = new Employee("Nora", 18, "1 Dark Dungeon", "hahaha@yahoo.com", "07530372629", "Saleswoman")
+   val emp1 = new ObjectOrientedGarage.Employee("Daniel", 20, "3 Mysterious Drive", "fake@email.com", "07530372629", "Salesman")
+   val emp2 = new ObjectOrientedGarage.Employee("Jason", 28, "2 Haunted Avenue ", "fake@gmail.com", "07530372629", "Salesman")
+   val emp3 = new ObjectOrientedGarage.Employee("Nora", 18, "1 Dark Dungeon", "hahaha@yahoo.com", "07530372629", "Saleswoman")
 
-    var c1 = new Car("Name 1", "Car" ,150 ,"Blue", "Petrol", "Vauxhall", "Five-Seater")
-    var c2 = new Car("Name 2", "Car" ,250 ,"Black", "Diesel", "Toyota", "Four-Seater")
-    var c3 = new Car("Name 3", "Car" ,500 ,"Red", "Electric", "Honda", "Five-Seater")
+    val cust1 = new ObjectOrientedGarage.Customer("Arkadiusz", 11, "Some Place", "Some@email", "03484739", "SOMEACCOUNTNUMBER")
+    val cust2 = new ObjectOrientedGarage.Customer("Abdi", 7, "Hut", "Some@email", "03484sda739", "pSSHHH")
+    val cust3 = new ObjectOrientedGarage.Customer("Scott", 7, "Hut", "Some@email", "03484sda739", "pSSHHH")
 
-    var b1= new Bike("Bike 1","Bike", 80, "Green", "Mountain")
-    var b2= new Bike("Bike 2","Bike", 120, "White", "BMX")
-    var b3= new Bike("Bike 3","Bike", 200, "Black", "BMX")
+    var c1 = new ObjectOrientedGarage.Car("Name 1", "ObjectOrientedGarage.Car" ,150 ,"Blue", "Petrol", "Vauxhall", "Five-Seater", cust1)
+    var c2 = new ObjectOrientedGarage.Car("Name 2", "ObjectOrientedGarage.Car" ,250 ,"Black", "Diesel", "Toyota", "Four-Seater", cust3)
+    var c3 = new ObjectOrientedGarage.Car("Name 3", "ObjectOrientedGarage.Car" ,500 ,"Red", "Electric", "Honda", "Five-Seater", cust1)
 
-    var g1 = new Garage("1")
+    var b1= new ObjectOrientedGarage.Bike("ObjectOrientedGarage.Bike 1","ObjectOrientedGarage.Bike", 80, "Green", "Mountain", cust2)
+    var b2= new ObjectOrientedGarage.Bike("ObjectOrientedGarage.Bike 2","ObjectOrientedGarage.Bike", 120, "White", "BMX", cust2)
+    var b3= new ObjectOrientedGarage.Bike("ObjectOrientedGarage.Bike 3","ObjectOrientedGarage.Bike", 200, "Black", "BMX", cust3)
 
-    g1.addToEmployeeList(emp1); g1.addToEmployeeList(emp2); g1.addToEmployeeList(emp3)
+  var g1 = new ObjectOrientedGarage.Garage("1")
+//
+   g1.addToEmployeeList(emp1); g1.addToEmployeeList(emp2); g1.addToEmployeeList(emp3)
     g1.addCarToVehicleList(c1); g1.addCarToVehicleList(c2); g1.addCarToVehicleList(c3)
     g1.addBikeToVehicleList(b1); g1.addBikeToVehicleList(b2); g1.addBikeToVehicleList(b3)
-    //g1.removeFromVehicleListByID(2)
-    g1.printEmployeeList() ; g1.printVehicleList()
-    //g1.removeFromVehicleListByType("Bike");
+   // g1.removeFromVehicleListByID(2)
+
+   // g1.printEmployeeList() ;
+    g1.printVehicleList()
+   // g1.removeFromVehicleListByID("B1")
+  //  g1.removeFromVehicleListByID("C2")
+    g1.calculateTotalFixTime()
+    g1.calculateTotalCost()
+    emp1.fixVehicle(c1)
+    emp1.fixVehicle(c2)
+    emp3.fixVehicle(c3)
+    emp2.fixVehicle(b1)
+    emp2.fixVehicle(b2)
+    emp2.fixVehicle(b3)
+    g1.calculateTotalFixTime()
+    g1.calculateTotalCost()
+    g1.printVehicleList()
+  // g1.removeFromVehicleListByType("ObjectOrientedGarage.Bike");
    //g1.printVehicleList()
 
     println()
