@@ -1,5 +1,7 @@
 import scala.collection.JavaConverters
 import java.util.TimeZone
+
+import scala.collection.mutable.ListBuffer
 /**
   * Created by Administrator on 05/06/2017.
   */
@@ -163,7 +165,7 @@ object Main {
 
   // functional()
 //    weather(100,true)
-
+//
    val emp1 = new ObjectOrientedGarage.Employee("Daniel", 20, "3 Mysterious Drive", "fake@email.com", "07530372629", "Salesman")
    val emp2 = new ObjectOrientedGarage.Employee("Jason", 28, "2 Haunted Avenue ", "fake@gmail.com", "07530372629", "Salesman")
    val emp3 = new ObjectOrientedGarage.Employee("Nora", 18, "1 Dark Dungeon", "hahaha@yahoo.com", "07530372629", "Saleswoman")
@@ -181,31 +183,19 @@ object Main {
     var b3= new ObjectOrientedGarage.Bike("ObjectOrientedGarage.Bike 3","ObjectOrientedGarage.Bike", 200, "Black", "BMX", cust3)
 
   var g1 = new ObjectOrientedGarage.Garage("1")
-//
-   g1.addToEmployeeList(emp1); g1.addToEmployeeList(emp2); g1.addToEmployeeList(emp3)
+
+    g1.addToEmployeeList(emp1); g1.addToEmployeeList(emp2); g1.addToEmployeeList(emp3)
     g1.addCarToVehicleList(c1); g1.addCarToVehicleList(c2); g1.addCarToVehicleList(c3)
     g1.addBikeToVehicleList(b1); g1.addBikeToVehicleList(b2); g1.addBikeToVehicleList(b3)
-   // g1.removeFromVehicleListByID(2)
+    g1.runDay()
 
-   // g1.printEmployeeList() ;
-    g1.printVehicleList()
+   // g1.printEmployeeList() ;  g1.printVehicleList()
    // g1.removeFromVehicleListByID("B1")
-  //  g1.removeFromVehicleListByID("C2")
-    g1.calculateTotalFixTime()
-    g1.calculateTotalCost()
-    emp1.fixVehicle(c1)
-    emp1.fixVehicle(c2)
-    emp3.fixVehicle(c3)
-    emp2.fixVehicle(b1)
-    emp2.fixVehicle(b2)
-    emp2.fixVehicle(b3)
-    g1.calculateTotalFixTime()
-    g1.calculateTotalCost()
-    g1.printVehicleList()
-  // g1.removeFromVehicleListByType("ObjectOrientedGarage.Bike");
-   //g1.printVehicleList()
+
+
 
     println()
+
   }
 
 

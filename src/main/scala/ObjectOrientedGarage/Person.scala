@@ -19,7 +19,7 @@ abstract class Person(name : String, age_ : Int, address_ : String, email_ : Str
   def getEmail : String = { email}
   def getPhoneNumber : String = { phoneNumber}
 
-  // Setter s
+  // Setters
   def setAge(newAge: Int) : Any = {age = newAge}
   def setWallet(newWallet: Int) : Any = {wallet = newWallet}
   def setName(newName: String) : Any = {fullName = newName}

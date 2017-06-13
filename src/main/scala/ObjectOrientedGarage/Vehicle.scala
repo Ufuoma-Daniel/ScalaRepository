@@ -14,7 +14,7 @@ abstract class Vehicle(name : String, vType: String, cost_ : Int, colour_ : Stri
   private var cost = cost_
   private var colour = colour_
   private var makeDate = "1/1/1990"
-  private var currentState = "Waiting"
+  private var currentState = "Broken"
   private var partsList = ListBuffer[Part]()
 
   // Getters
@@ -64,7 +64,7 @@ abstract class Vehicle(name : String, vType: String, cost_ : Int, colour_ : Stri
     for(x<-0 until partsList.size){
        partsList(x).fix()
     }
-    currentState = "Finished"
+    currentState = "Fixed"
   }
 
 }
