@@ -36,7 +36,7 @@ class Part {
   def randomTime() : Int = {
     var x = 0
     if(getCurrentState.equals("Broken")) {
-       x = r.nextInt(1000 - 100 + 1) + 10
+       x = r.nextInt(800 - 100 + 1) + 10
     }
     x
   }

@@ -1,6 +1,9 @@
 package ObjectOrientedGarage
 
 import scala.collection.mutable.ListBuffer
+import scala.concurrent.Future
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.util.{Failure,Success}
 
 /**
   * Created by Administrator on 06/06/2017.
@@ -16,6 +19,8 @@ class Garage (a: String) {
   var bIdTally = 1;
   var cIdTally = 1
 
+  vehicleList += bikeList
+  vehicleList += carList
 
   // Getters
   def getGarageID: String = {
@@ -84,7 +89,7 @@ class Garage (a: String) {
     println("Time to fix all Vehicles: " + totalTime + "seconds")
   }
 
-  def calculateTotalCost() {
+  def calculateTotalCost() : Int = {
     var totalTime = 0;
     for (x <- 0 until carList.size) {
       totalTime += carList(x).totalCost()
@@ -92,7 +97,8 @@ class Garage (a: String) {
     for (x <- 0 until bikeList.size) {
       totalTime += bikeList(x).totalCost()
     }
-    println("Cost to fix all Vehicles: £" + totalTime)
+   // println("Cost to fix all Vehicles: £" + totalTime)
+    totalTime
   }
 
   //ObjectOrientedGarage.Employee Interactions
@@ -121,25 +127,44 @@ class Garage (a: String) {
         employee = employeeList(loop)
       }
     }
-    employee
-  }
 
-
-
-  //Run the day
-  def runDay(): Unit = {
-    calculateTotalCost()
-    calculateTotalFixTime()
-    var todaysList = carList.toList ::: bikeList.toList
-
-    for (y<-0 until todaysList.size){
-      if (todaysList(y).getCurrentState.equals("Broken")) {
-        var e = getAvailableEmployee
-        e.fixVehicle(todaysList(y))
-      }
+    if (!employee.getAvailability) {
+      sleep(100) ;employee = getAvailableEmployee; employee
+    }
+    else {
+      employee
     }
   }
+
+  def FixVehicles(item: Vehicle, employee: Employee): Unit = {
+      if (item.getCurrentState.equals("Broken")) {
+        employee.setAvailability(false)
+        println(employee.getName+" is WORKING")
+        val future = Future{
+          Thread.sleep(item.totalFixTime())
+          employee.fixVehicle(item)
+        }
+
+        future.onComplete{
+          case Success(result) => employee.setAvailability(true); println(employee.getName+" is AVAILABLE")
+          case Failure(e) => e.getStackTrace
+        }
+    }
+  }
+
+  def sleep(time: Int) {Thread.sleep(time)}
+
+    //Run the day
+   def runDay(): Unit = {
+      val earnings = calculateTotalCost() ; calculateTotalFixTime()
+      val dailyList = vehicleList.flatten
+      dailyList.foreach(item =>
+        FixVehicles(item, getAvailableEmployee))
+     sleep(5000)
+     println("Day Complete, Total Earnings: £"+earnings)
+    }
 }
+
 
 
 

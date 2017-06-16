@@ -26,7 +26,7 @@ object Main {
       for(position <- a.length() to b){
         var character = a.charAt(position)
         newString= newString.concat(character.toString)
-        //println(str takeRight(x))
+        //Other implementation - println(str takeRight(x))
       }
       println(newString)
     }
@@ -85,7 +85,6 @@ object Main {
 
     }
     def multiPrintRecursive(a: String, b: Int) : Unit = {
-
       if(b != 0){
         println(a)
         multiPrintRecursive(a,b-1)
@@ -105,7 +104,7 @@ object Main {
       }
     }
     def SumWithPatternMatching(a: Int, b: Int, c: Boolean) : Unit = {
-      var newList = List(a, b, c); val d = a+b ; val e = a*b;
+      val newList = List(a, b, c); val d = a+b ; val e = a*b
       newList match {
         case List(0, b, c) => println(b)
         case List(a, 0, c) => println(a)
@@ -174,19 +173,28 @@ object Main {
     val cust2 = new ObjectOrientedGarage.Customer("Abdi", 7, "Hut", "Some@email", "03484sda739", "pSSHHH")
     val cust3 = new ObjectOrientedGarage.Customer("Scott", 7, "Hut", "Some@email", "03484sda739", "pSSHHH")
 
-    var c1 = new ObjectOrientedGarage.Car("Name 1", "ObjectOrientedGarage.Car" ,150 ,"Blue", "Petrol", "Vauxhall", "Five-Seater", cust1)
-    var c2 = new ObjectOrientedGarage.Car("Name 2", "ObjectOrientedGarage.Car" ,250 ,"Black", "Diesel", "Toyota", "Four-Seater", cust3)
-    var c3 = new ObjectOrientedGarage.Car("Name 3", "ObjectOrientedGarage.Car" ,500 ,"Red", "Electric", "Honda", "Five-Seater", cust1)
+    var c1 = new ObjectOrientedGarage.Car("Car 1", "ObjectOrientedGarage.Car" ,150 ,"Blue", "Petrol", "Vauxhall", "Five-Seater", cust1)
+    var c2 = new ObjectOrientedGarage.Car("Car 2", "ObjectOrientedGarage.Car" ,250 ,"Black", "Diesel", "Toyota", "Four-Seater", cust3)
+    var c3 = new ObjectOrientedGarage.Car("Car 3", "ObjectOrientedGarage.Car" ,500 ,"Red", "Electric", "Honda", "Five-Seater", cust1)
+    var c4 = new ObjectOrientedGarage.Car("Car 1", "ObjectOrientedGarage.Car" ,150 ,"Blue", "Petrol", "Vauxhall", "Five-Seater", cust1)
+    var c5 = new ObjectOrientedGarage.Car("Car 2", "ObjectOrientedGarage.Car" ,250 ,"Black", "Diesel", "Toyota", "Four-Seater", cust3)
+    var c6 = new ObjectOrientedGarage.Car("Car 3", "ObjectOrientedGarage.Car" ,500 ,"Red", "Electric", "Honda", "Five-Seater", cust1)
 
-    var b1= new ObjectOrientedGarage.Bike("ObjectOrientedGarage.Bike 1","ObjectOrientedGarage.Bike", 80, "Green", "Mountain", cust2)
-    var b2= new ObjectOrientedGarage.Bike("ObjectOrientedGarage.Bike 2","ObjectOrientedGarage.Bike", 120, "White", "BMX", cust2)
-    var b3= new ObjectOrientedGarage.Bike("ObjectOrientedGarage.Bike 3","ObjectOrientedGarage.Bike", 200, "Black", "BMX", cust3)
+    var b1= new ObjectOrientedGarage.Bike("Bike 1","ObjectOrientedGarage.Bike", 80, "Green", "Mountain", cust2)
+    var b2= new ObjectOrientedGarage.Bike("Bike 2","ObjectOrientedGarage.Bike", 120, "White", "BMX", cust2)
+    var b3= new ObjectOrientedGarage.Bike("Bike 3","ObjectOrientedGarage.Bike", 200, "Black", "BMX", cust3)
+    var b4= new ObjectOrientedGarage.Bike("Bike 1","ObjectOrientedGarage.Bike", 80, "Green", "Mountain", cust2)
+    var b5= new ObjectOrientedGarage.Bike("Bike 2","ObjectOrientedGarage.Bike", 120, "White", "BMX", cust2)
+    var b6= new ObjectOrientedGarage.Bike("Bike 3","ObjectOrientedGarage.Bike", 200, "Black", "BMX", cust3)
 
   var g1 = new ObjectOrientedGarage.Garage("1")
 
     g1.addToEmployeeList(emp1); g1.addToEmployeeList(emp2); g1.addToEmployeeList(emp3)
     g1.addCarToVehicleList(c1); g1.addCarToVehicleList(c2); g1.addCarToVehicleList(c3)
     g1.addBikeToVehicleList(b1); g1.addBikeToVehicleList(b2); g1.addBikeToVehicleList(b3)
+    g1.addCarToVehicleList(c4); g1.addCarToVehicleList(c5); g1.addCarToVehicleList(c6)
+    g1.addBikeToVehicleList(b4); g1.addBikeToVehicleList(b5); g1.addBikeToVehicleList(b6)
+
     g1.runDay()
 
    // g1.printEmployeeList() ;  g1.printVehicleList()

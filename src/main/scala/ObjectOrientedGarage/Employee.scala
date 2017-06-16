@@ -27,11 +27,9 @@ class Employee (name : String, age_ : Int, address_ : String, email_ : String, p
     send
   }
   def fixVehicle(vehicle: Vehicle): Unit = {
-    setAvailability(false)
-    Thread.sleep(vehicle.totalFixTime())
+    //setAvailability(false)
     println("Vehicle "+vehicle.getVehicleID+ " is fixed, Customer "+vehicle.getOwner.getName+ " was charged £"+vehicle.totalCost()+ " by employee "+name)
     chargeCustomer(vehicle.getOwner, vehicle.totalCost())
     vehicle.fixAllParts()
-    setAvailability(true)
   }
 }
